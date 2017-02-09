@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Game</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="800" height="400"></canvas>
+
+    <script>
+      'use strict';
+      var Game = {
+          canvas :undefined
+        , canvasContext: undefined
+        , rectanglePosition: 0
+        , backgroundSprite: undefined
+        , ballonSprite: undefined
+        , ballonPos: { x: 0, y: 50 }
+        , backgroundMusic: undefined
+      };
+
+      Game.start = function() {
+        Game.canvas = document.getElementById('canvas');
+        Game.canvasContext = Game.canvas.getContext('2d');
+        // music
+        Game.backgroundMusic = new Audio();
+        Game.backgroundMusic.src= 'assets/music.mp3';
+        Game.backgroundMusic.play();
+        Game.backgroundMusic.volume = 0.7;
+        // sprites
+        Game.backgroundSprite = new Image();
+        Game.backgroundSprite.src = 'assets/background.png';
+
+        Game.ballonSprite = new Image();
+        Game.ballonSprite.src = 'assets/point.png';
+        // timeout for wait the assets
+        window.setTimeout(Game.mainloop, 500);
+      }
+
+      Game.update = function() {
+        var d = new Date();
+        Game.rectanglePosition = d.getTime() % Game.canvas.width;
+      }
+
+      Game.clearCanvas = function () {
+        // Game.canvasContext.fillStyle = 'green';
+        Game.canvasContext.clearRect(0, 0, Game.canvas.width, Game.canvas.height);
+      }
+
+      Game.draw = function() {
+        Game.canvasContext.fillStyle = 'blue';
+        Game.canvasContext.fillRect(Game.rectanglePosition, 100, 50, 50);
+        Game.drawImage(Game.backgroundSprite, {x: 0, y: 0});
+        Game.drawImage(Game.ballonSprite, Game.ballonPos);
+      }
+
+      Game.drawImage = function (sprite, position) {
+        Game.canvasContext.save();
+        Game.canvasContext.translate(position.x, position.y);
+        Game.canvasContext.drawImage(sprite, 0, 0, sprite.width, sprite.height,
+                                    0, 0, sprite.width, sprite.height);
+        Game.canvasContext.restore();
+      }
+
+      Game.mainloop = function() {
+        Game.clearCanvas();
+        Game.update();
+        Game.draw();
+        // window.setTimeout(Game.mainloop, 1000/60);
+      }
+
+      // page loaded
+      document.addEventListener('DOMContentLoaded', Game.start);
+    </script>
+  </body>
+</html>

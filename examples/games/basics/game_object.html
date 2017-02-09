@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Game</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="800" height="400"></canvas>
+
+    <script>
+      'use strict';
+      var Game = {
+          canvas :undefined
+        , canvasContext: undefined
+        , rectanglePosition: 0
+      };
+
+      Game.start = function() {
+        Game.canvas = document.getElementById('canvas');
+        Game.canvasContext = Game.canvas.getContext('2d');
+
+        mainloop();
+      }
+
+      document.addEventListener('DOMContentLoaded', Game.start);
+
+      Game.update = function() {
+        var d = new Date();
+        Game.rectanglePosition = d.getTime() % Game.canvas.width;
+      }
+
+      Game.clearCanvas = function () {
+        // Game.canvasContext.fillStyle = 'green';
+        Game.canvasContext.clearRect(0, 0, Game.canvas.width, Game.canvas.height);
+      }
+
+      Game.draw = function() {
+        Game.canvasContext.fillStyle = 'blue';
+        Game.canvasContext.fillRect(Game.rectanglePosition, 100, 50, 50);
+      }
+
+      Game.mainloop = function() {
+        Game.clearCanvas();
+        Game.update();
+        Game.draw();
+        window.setTimeout(Game.mainloop, 1000/60);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Web Notifications API Demo</title>
+
+</head>
+<body>
+  <button onclick="notifyMe()">Notify me!</button>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!Notification) {
+      console.log('not available');
+      alert('Desktop notifications not available in your browser. Try Chromium.');
+      return;
+    }
+
+    if (Notification.permission !== "granted")
+    console.log('not granted');
+    Notification.requestPermission();
+  });
+
+  function notifyMe() {
+    if (Notification.permission !== "granted")
+    Notification.requestPermission();
+    else {
+      var notification = new Notification('Notification title', {
+        icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+        body: "Hey there! You've been notified!",
+      });
+      console.log('notification');
+      notification.onclick = function () {
+        window.open("http://stackoverflow.com/a/13328397/1269037");
+      };
+
+    }
+
+  }
+  </script>
+</body>
+</html>

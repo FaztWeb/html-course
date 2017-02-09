@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      window.addEventListener('load' ,function () {
+
+        var intervalo = window.setInterval(function () {
+          console.log('intervalo');
+        }, 1000);
+
+        setTimeout(function () {
+          window.clearInterval(intervalo);
+        }, 4000);
+
+      })
+    </script>
+  </body>
+</html>

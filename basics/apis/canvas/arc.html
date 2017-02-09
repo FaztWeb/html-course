@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      canvas{
+        border: solid;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="micanvas"></canvas>
+
+    <script>
+      window.addEventListener('load', init);
+      function init() {
+        var canvas = document.getElementById('micanvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        ctx.arc(50,50,10,to_radians(0),to_radians(360),true);
+        ctx.moveTo(50, 80);
+        ctx.arc(50, 50,30,to_radians(90),to_radians(180),true);
+        ctx.moveTo(160, 80);
+        ctx.arc(150,50,10,to_radians(0),to_radians(360),true);
+        ctx.moveTo(150, 80);
+        ctx.arc(150,50,30,to_radians(90),to_radians(360),false);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(90,110,30,to_radians(0),to_radians(180));
+        ctx.stroke();
+      }
+      function to_radians(grades) {
+        return (grades * Math.PI)/180;
+      }
+    </script>
+  </body>
+</html>

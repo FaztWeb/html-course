@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Animation</title>
+  </head>
+  <body>
+    <canvas id="micanvas" width="300" height="300"></canvas>
+    <input type="button" id="boton" value="Start">
+    <script>
+
+      window.addEventListener('load', function () {
+        var velocidad = 5;
+        var direccion =velocidad, iniciar = false, x = 50, y = 10;
+        var intervalo;
+
+        var canvas = document.getElementById('micanvas');
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgb(200,0,0)';
+        ctx.arc(x,y,10,0,7);
+        ctx.fill();
+
+        document.getElementById('boton').addEventListener('click', function () {
+          if (iniciar) {
+            this.value = 'Iniciar';
+            window.clearInterval(intervalo);
+            iniciar = false;
+          }else{
+            this.value = 'Detener';
+            intervalo = window.setInterval(function () {
+              moveAndDraw(canvas,ctx);
+            },32);
+            iniciar = true;
+          }
+        })
+
+
+      function draw(canvas, ctx, x, y) {
+        canvas.width = canvas.width;
+        ctx.arc(x,y,10,0,7);
+        ctx.fill();
+      }
+      function moveAndDraw(canvas, ctx) {
+        if (y > canvas.height - 20) direccion = -velocidad;
+        if (y < 20) direccion = velocidad;
+
+        y += direccion;
+        draw(canvas, ctx, x, y);
+      }
+      });
+    </script>
+  </body>
+</html>

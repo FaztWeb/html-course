@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>canvas</title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var changeCanvasColor = function () {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        context.fillStyle = 'blue';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      document.addEventListener('DOMContentLoaded', changeCanvasColor);
+    </script>
+  </body>
+</html>

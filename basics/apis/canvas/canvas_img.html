@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>imagenes</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Moon_names.svg/220px-Moon_names.svg.png"  id="img" style="display:none;" />
+
+    <script>
+      var micanvas = document.getElementById('canvas');
+      var ctx = micanvas.getContext('2d');
+      var img = document.getElementById('img');
+
+      var width = 100;
+      var height = 200;
+
+      ctx.drawImage(img, 0, 0, width, height);
+    </script>
+  </body>
+</html>

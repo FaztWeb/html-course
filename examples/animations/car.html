@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Car</title>
+    <style media="screen">
+      #car{font-family: Arial;}
+      #body {
+        position: absolute;
+        top: 50px;
+        width: 80%;
+        height: 100px;
+        background‐color: #000000;
+        text‐align: center;
+      }
+      #backwheel {
+        position: absolute;
+        left: 10%;
+        top: 130px;
+        background‐color: #ffffff;
+        border: 3px solid black;
+        border‐radius: 50%;
+        width: 40px;
+        height: 40px;
+      }
+      #frontwheel {
+        position: absolute;
+        left: 55%;
+        top: 130px;
+        background‐color: #ffffff;
+        border: 3px solid black;
+        border‐radius: 50%;
+        width: 40px;
+        height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="car">
+      this <span id="modelyear"></span> dream car can be yours for just $ :
+      <span id="pricetag"></span>
+      <div id="body"></div>
+      <div id="frontwheel"></div>
+      <div id="backwheel"></div>
+    </div>
+
+    <script>
+    var dreamCar = {
+      make: "Oldsmobile",
+      model: "98",
+      color: "brown",
+      year: 1983,
+      bodyStyle: "Luxury Car",
+      price: 4500
+    };
+    document.getElementById('pricetag').innerHTML = dreamCar.price;
+    document.getElementById('modelyear').innerHTML = dreamCar.model;
+    document.getElementById('body').style.color = dreamCar.color;
+    </script>
+  </body>
+</html>

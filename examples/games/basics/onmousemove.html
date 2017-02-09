@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>onmousemove</title>
+
+  </head>
+  <body>
+    <canvas id="canvas" width="800" height="480"></canvas>
+    <script>
+    // Game Object
+      let Game = {
+        canvas: undefined
+      , canvasContext: undefined
+      , ballonPos: { x: 0, y: 50 }
+      , backgroundSprite: undefined
+      , rectanglePosition: 0
+      , ballonSprite: undefined
+      };
+
+      Game.start = function () {
+        Game.canvas = document.getElementById('canvas');
+        Game.canvasContext = Game.canvas.getContext('2d');
+        // sprites
+        Game.backgroundSprite = new Image();
+        Game.backgroundSprite.src = 'assets/background.png';
+        Game.ballonSprite = new Image();
+        Game.ballonSprite.src = 'assets/point.png';
+        Game.mainloop();
+      }
+
+      Game.clearCanvas = function () {
+        Game.canvasContext.clearRect(0, 0, Game.canvas.width, Game.canvas.height);
+      }
+
+      Game.update = function () {
+
+      }
+
+      Game.draw = function () {
+        Game.canvasContext.fillRect(Game.rectanglePosition, 100, 50, 50);
+        Game.drawImage(Game.backgroundSprite, {x: 0, y: 0});
+        Game.drawImage(Game.ballonSprite, Game.ballonPos);
+      }
+
+      Game.drawImage = function (sprite, position) {
+        Game.canvasContext.save();
+        Game.canvasContext.translate(position.x, position.y);
+        Game.canvasContext.drawImage(sprite, 0, 0, sprite.width, sprite.height,
+                                    0, 0, sprite.width, sprite.height);
+        Game.canvasContext.restore();
+      }
+      Game.mainloop = function () {
+        Game.clearCanvas();
+        Game.update();
+        Game.draw();
+        window.setTimeout(Game.mainloop, 1000/60);
+      }
+      // event handlers
+      document.onmousemove = handleMouseMove;
+
+      function handleMouseMove(event) {
+        console.log(event);
+        Game.ballonPos = {x: event.pageX, y: event.pageY}
+      }
+
+      document.addEventListener('DOMContentLoaded', Game.start);
+    </script>
+  </body>
+</html>

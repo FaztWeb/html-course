@@ -1,0 +1,142 @@
+/****
+STYLES GUIDE:
+0. RESET
+1. LAYOUT
+2. GENERIC ITEMS
+3. LIST
+4. FORM
+-----------------
+*/
+
+
+/* -------- 0. RESET -------- */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+* { box-sizing:border-box;}
+
+input, select, textarea { 
+	margin: 0;
+	padding: 0;
+	font:400 13px/1 'Roboto';
+}
+
+
+/* -------- 1. LAYOUT -------- */
+	html, body { height: 100%; min-height: 100%;}
+	body { font:400 13px/1 'Roboto';}
+
+	.wrapper { display: flex; flex-flow:column; align-items:center; justify-content:center; width: 100%; min-height: 100%; background: #f1f1f1;}
+	.contain { max-width: 1024px; margin: 0 auto;}
+	.navbar { width: 100%;}
+	.content { display: flex; flex-flow:column; width: 100%;}
+
+	.header { width: 100%;}
+
+	.paso-1, .paso-2, .paso-3 { justify-content:flex-start;}
+
+		.paso-3 .content { padding-top: 100px; padding-bottom: 100px; align-items:center; text-align: center;}
+
+	.login .header { padding-bottom: 30px; width: auto; text-align: center;}
+	.login .contain { max-width: 350px; }
+	.login .col { width: 100%; padding: 0;}
+
+/* -------- 2. GENERIC ITEMS -------- */
+	
+	.content header { padding-bottom: 80px; font-size: 45px; font-weight: 300; line-height: 1.2}
+		.content header p { font-size: 30px;}
+
+	.btn { width: 150px; background: #740900; color: #fff; text-align: center; border:0; padding: 10px 20px; font-size: 18px;  text-decoration: none;}
+
+/* -------- 3. LIST -------- */
+
+	.navbar { position: relative; z-index: 1; padding: 30px 50px; width: 100%; display: flex; align-items:flex-start; justify-content:center;}
+	.navbar:before { content: ""; position: absolute; top: 41%; left: 0; z-index: -1; display: block; width: 100%; height: 7px; background: #96110d; }
+
+		.navbar .item { display: flex; flex-flow:column; align-items:center; justify-content:flex-start; width: 33%; font-size: 11px; }
+			.item span:first-child { background: #96110d; width: 60px; line-height: 60px; border-radius: 50%; color: #fff; font-weight: bold; font-size: 55px; text-align: center;margin-bottom: 10px; }
+			.item span:last-child { max-width: 50px; text-align: center;}
+
+
+/* -------- 4. FORM -------- */
+
+	.form { width: 75%; margin:0 auto; padding-bottom: 30px; text-align: center;}
+		.col { display: inline-block; width: 33%; margin-bottom: 60px; padding: 0 20px; vertical-align: top; text-align: left;}
+		.col.all { display: block; width: 100%; background: #fff; padding: 15px; margin-bottom: 60px;}
+
+
+	.form label { display: block; margin-bottom: 5px; color:#333; font-size: 13px; text-transform: uppercase; }
+	.form input[type="text"], .form input[type="email"], .form input[type="password"], .form select, .form textarea { display: block; width: 100%; background: #fff; border:0; padding: 5px; height: 40px; margin-bottom: 25px;}
+
+		.form textarea { height: 150px;}
+
+	.form input[type="submit"] { background: #740900; color: #fff; text-align: center; border:0; padding: 10px 20px; font-size: 18px; }
+
+	.form input[type="checkbox"] { display: inline-block; margin-right: 5px;}
+
+		.form .tooltip { display: inline-block; background: #333; color: #fff; border-radius: 50%; width: 15px; line-height: 15px; text-align: center; vertical-align: middle;}
+
+		.form input[type="text"].small { display: inline-block; width: 28.9%; margin-right: 10px;}
+		.form .fecha_nacimiento .small:last-child { margin-right: 0;}
+
+		.form input:focus, .form textarea:focus { background: #e4d9d8;}
+
+		.col.file { background: #c2c2c2 url(images/ico-file.jpg) no-repeat center center; height: 250px;}
+		.form input[type="file"] { width: 100%; height: 100%; opacity: 0; cursor: pointer;}
+
+		.col.nobg { background: transparent; margin-bottom: 10px;}
+
+		.form .select { position: relative; overflow: hidden;}
+		.form .select:after { content: ""; position: absolute; right: 10px; top: 20%; display: block; width: 15px; height: 15px; background: url(images/ico-select.jpg) no-repeat center center;}
+		.form select { width: 120%;}
+
+	.error { position: relative; display: block; margin-top: -15px; margin-bottom: 30px; text-align: right; font-size: 12px; font-weight: 300; color: #ff1400;}
+	.error:after { content: "X"; position: absolute; right: 10px; top: -42px; display: block; width: 30px; height: 30px; font: 20px 'Roboto'; color: #ff1400; font-weight: 100;}
+

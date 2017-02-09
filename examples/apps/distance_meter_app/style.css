@@ -1,0 +1,7 @@
+body{background:#f4f4f4;font-family:arial;font-size:18px;}
+button{font-size:20px;padding: 3px 13px}
+button#stopBtn{display:none;}
+.container{width:100%;margin:0 auto;text-align:center}
+header{background:#333;padding:5px;}
+header h1{color:#fff;font-size:30px;margin:0;padding:0;}
+footer{background:#333;color:#fff;padding:8px;font-size:16px;}

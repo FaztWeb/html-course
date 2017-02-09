@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Distance App</title>
+    <link rel="stylesheet" href="style.css" media="screen" title="no title">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Dintance Meter</h1>
+      </header>
+
+        <p>
+          <strong>Starting Position</strong>
+          <br>
+          <span id="startLat">Acquiring Latitud...</span>
+          <span id="startLon">Acquiring Longitude...</span>
+        </p>
+        <p>
+          <strong>Current Position</strong>
+          <br>
+          <span id="currentLat">Acquiring Latitud...</span>
+          <span id="currentLon">Acquiring Longitude...</span>
+        </p>
+        <p>
+          <strong>Distance Gone</strong>
+          <span id="distance">0</span> Kilometers
+        </p>
+        <p>
+          <button id="startBtn" onclick="startTracking()">Start Tracking</button>
+          <button id="stopBtn" onclick="stopTracking()">Stop Tracking</button>
+        </p>
+        <footer>
+          <span>bla bla &copy; 2030 Distance meter</span>
+        </footer>
+      <script src="app.js" charset="utf-8"></script>
+    </div>
+  </body>
+</html>
